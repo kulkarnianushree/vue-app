@@ -1,7 +1,8 @@
 import {createRouter,createWebHistory} from 'vue-router'
 import CoachList from './components/coaches/CoachList.vue'
-
-
+import SendMessage from './components/Messages/SendMessage.vue'
+import MessageList from './components/Messages/MessageList.vue'
+import NotFound from './components/nav/NotFound.vue'
 const router = createRouter({
     history:createWebHistory(),
     routes:[
@@ -14,21 +15,18 @@ const router = createRouter({
             component:CoachList
         },
         {
-            path:'/coaches/:id',
-            component:null,
-            children:{path:'/contact',component:null}
-        },
-        {
             path:'/register',
-            component:null
+            component:SendMessage,
+            name:'sendMessage',
+            props:true
         },
         {
             path:'/requests',
-            component:null
+            component:MessageList
         },
         {
             path:'/:notFound(.*)',
-            component:null
+            component:NotFound
         }
     ]
 })
